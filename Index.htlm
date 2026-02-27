@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive On Demand</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; text-align: center; padding: 20px; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 350px; margin: auto; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: #28a745; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🚗 Drive On Demand</h2>
+        <form id="bookForm">
+            <input type="text" id="p_name" placeholder="Aapka Naam" required>
+            <select id="p_car">
+                <option value="Sedan">Sedan (₹999)</option>
+                <option value="SUV">SUV (₹1499)</option>
+                <option value="Hatchback">Hatchback (₹799)</option>
+            </select>
+            <button type="submit">Book Karein</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('bookForm').onsubmit = function(e) {
+            e.preventDefault();
+            localStorage.setItem('u_name', document.getElementById('p_name').value);
+            localStorage.setItem('u_car', document.getElementById('p_car').value);
+            window.location.href = "checkout.html";
+        };
+    </script>
+</body>
+</html>
