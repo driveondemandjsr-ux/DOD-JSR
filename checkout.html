@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body { font-family: sans-serif; background: #e9ecef; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 85%; }
+        .price { font-size: 28px; color: #28a745; margin: 15px 0; font-weight: bold; }
+        .btn { background: #007bff; color: white; padding: 15px; border-radius: 8px; text-decoration: none; display: block; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Booking Details</h2>
+        <p>Naam: <b id="n"></b></p>
+        <p>Gadi: <b id="c"></b></p>
+        <div class="price">Total: ₹999</div>
+        <a href="#" class="btn" onclick="alert('Payment Successful!')">Pay Now</a>
+        <br>
+        <a href="index.html" style="color: #888; font-size: 14px;">Wapas Jayein</a>
+    </div>
+    <script>
+        document.getElementById('n').innerText = localStorage.getItem('u_name') || "Guest";
+        document.getElementById('c').innerText = localStorage.getItem('u_car') || "Not Selected";
+    </script>
+</body>
+</html>
