@@ -1,52 +1,71 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drive On Demand | Select Service</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background: #0f172a; color: white; text-align: center; padding-top: 50px; }
-        .service-card { 
-            background: #1e293b; border: 1px solid #334155; border-radius: 15px; 
-            padding: 25px; cursor: pointer; transition: 0.3s; margin-bottom: 20px;
-        }
-        .service-card:hover { transform: scale(1.05); border-color: #3b82f6; }
-        h1 { font-weight: 800; margin-bottom: 40px; color: #3b82f6; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DriveOnDemandJSR | Premium Driver Services</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🚗 Drive On Demand</h1>
-        <p class="mb-5">Apni service select karein</p>
-        <div class="row justify-content-center">
-            <div class="col-md-4" onclick="selectService('One Way Trip', '999')">
-                <div class="service-card">
-                    <h3>One Way</h3>
-                    <p class="text-info">Fixed ₹999</p>
-                </div>
-            </div>
-            <div class="col-md-4" onclick="selectService('Round Trip', '1499')">
-                <div class="service-card">
-                    <h3>Round Trip</h3>
-                    <p class="text-info">Fixed ₹1499</p>
-                </div>
-            </div>
-            <div class="col-md-4" onclick="selectService('Local Rental', '799')">
-                <div class="service-card">
-                    <h3>Local (8Hrs)</h3>
-                    <p class="text-info">Fixed ₹799</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <script>
-        function selectService(name, price) {
-            localStorage.setItem('selectedService', name);
-            localStorage.setItem('selectedPrice', price);
-            window.location.href = "checkout.html";
-        }
-    </script>
+<header>
+  <div class="logo">DriveOnDemandJSR</div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Premium Cab & Driver Services</h1>
+  <p>Reliable. Verified. Professional Drivers in Jamshedpur.</p>
+  <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+    Book Now
+  </button>
+</section>
+
+<section id="services" class="section">
+  <h2>Cab Services</h2>
+  <div class="card-container">
+    <div class="card" onclick="goToCheckout('Swift Dzire - ₹1000')">Swift Dzire - ₹1000</div>
+    <div class="card" onclick="goToCheckout('Ertiga - ₹1200')">Ertiga - ₹1200</div>
+    <div class="card" onclick="goToCheckout('Innova - ₹1500')">Innova - ₹1500</div>
+  </div>
+</section>
+
+<section class="section dark">
+  <h2>Driver Plans</h2>
+  <div class="card-container">
+    <div class="card" onclick="goToCheckout('2 Hours - ₹249')">2 Hours - ₹249</div>
+    <div class="card" onclick="goToCheckout('4 Hours - ₹429')">4 Hours - ₹429</div>
+    <div class="card" onclick="goToCheckout('6 Hours - ₹629')">6 Hours - ₹629</div>
+    <div class="card" onclick="goToCheckout('8 Hours - ₹829')">8 Hours - ₹829</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Outstation Driver</h2>
+  <div class="card-container">
+    <div class="card" onclick="goToCheckout('Outstation Return - ₹1000/Day')">
+      Return - ₹1000/Day
+    </div>
+    <div class="card" onclick="goToCheckout('Drop Only - ₹4/KM + Food')">
+      Drop Only - ₹4/KM + Food
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <p>DriveOnDemandJSR | Jamshedpur</p>
+  <p>WhatsApp: 7903520120</p>
+</footer>
+
+<script>
+function goToCheckout(service){
+  localStorage.setItem("selectedService", service);
+  window.location.href = "checkout.html";
+}
+</script>
+
 </body>
 </html>
