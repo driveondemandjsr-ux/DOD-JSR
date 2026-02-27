@@ -1,85 +1,64 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Booking</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background: #f8f9fa; padding: 30px 0; }
-        .form-box { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 550px; margin: auto; }
-        .header-box { background: #25D366; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Booking | DriveOnDemandJSR</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="form-box">
-            <div class="header-box">
-                <h4 id="serviceTitle">Booking Details</h4>
-            </div>
-            <form onsubmit="sendWhatsApp(event)">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label>Naam</label>
-                        <input type="text" id="name" class="form-control" placeholder="Aapka Naam" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label>Phone</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="Mobile Number" required>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label>Pickup Location</label>
-                    <input type="text" id="pickup" class="form-control" placeholder="Poora Address" required>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label>Date</label>
-                        <input type="date" id="date" class="form-control" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label>Time</label>
-                        <input type="time" id="time" class="form-control" required>
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <label>Payment UTR (Optional)</label>
-                    <input type="text" id="utr" class="form-control" placeholder="Transaction ID">
-                </div>
-                <button type="submit" class="btn btn-success w-100 py-3 fw-bold">WhatsApp Par Confirm Karein ✅</button>
-                <a href="index.html" class="d-block text-center mt-3 text-muted text-decoration-none">← Service Badlein</a>
-            </form>
-        </div>
+
+<section class="section booking">
+  <h2>Complete Booking</h2>
+
+  <form onsubmit="sendWhatsApp(event)">
+    <input type="text" id="service" readonly required>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="tel" id="phone" placeholder="Mobile Number" required>
+    <input type="text" id="pickup" placeholder="Pickup Location" required>
+    <input type="date" id="date" required>
+    <input type="time" id="time" required>
+
+    <div class="payment-box">
+      <h3>Pay ₹249 Advance</h3>
+      <a class="pay-btn"
+      href="upi://pay?pa=tmps3012568575403903@slc&pn=DriveOnDemandJSR&am=249&cu=INR">
+      Pay Advance via UPI
+      </a>
+      <p>Advance ₹249 (Non-Refundable if cancelled by customer)</p>
+      <p>Overtime ₹80 per hour</p>
     </div>
 
-    <script>
-        // Pehle page se data load karna
-        const selectedSrv = localStorage.getItem('selectedService') || "Not Selected";
-        const selectedPrc = localStorage.getItem('selectedPrice') || "0";
-        document.getElementById('serviceTitle').innerText = selectedSrv + " (₹" + selectedPrc + ")";
+    <input type="text" id="utr" placeholder="Enter UTR Number After Payment" required>
+    <button type="submit">Confirm Booking</button>
+  </form>
+</section>
 
-        function sendWhatsApp(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById("name").value;
-            const phone = document.getElementById("phone").value;
-            const pickup = document.getElementById("pickup").value;
-            const date = document.getElementById("date").value;
-            const time = document.getElementById("time").value;
-            const utr = document.getElementById("utr").value || "N/A";
+<script>
 
-            let msg = `*NEW BOOKING* 🚗%0A` +
-                      `*Service:* ${selectedSrv}%0A` +
-                      `*Price:* ₹${selectedPrc}%0A` +
-                      `*Name:* ${name}%0A` +
-                      `*Phone:* ${phone}%0A` +
-                      `*Pickup:* ${pickup}%0A` +
-                      `*Date:* ${date}%0A` +
-                      `*Time:* ${time}%0A` +
-                      `*UTR:* ${utr}`;
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("service").value =
+    localStorage.getItem("selectedService") || "";
+});
 
-            window.open(`https://wa.me/917903520120?text=${msg}`, "_blank");
-        }
-    </script>
+function sendWhatsApp(e){
+  e.preventDefault();
+
+  let msg =
+`Booking Request:
+Service: ${service.value}
+Name: ${name.value}
+Phone: ${phone.value}
+Pickup: ${pickup.value}
+Date: ${date.value}
+Time: ${time.value}
+UTR: ${utr.value}`;
+
+  let url = "https://wa.me/917903520120?text=" + encodeURIComponent(msg);
+  window.open(url, "_blank");
+}
+
+</script>
+
 </body>
 </html>
