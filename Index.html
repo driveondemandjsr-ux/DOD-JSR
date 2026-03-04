@@ -3,65 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DriveOnDemandJSR | Cab & Driver Services</title>
+<title>DriveOnDemandJSR</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div class="logo">DriveOnDemandJSR</div>
-</header>
+<header><div class="logo">DriveOnDemandJSR</div></header>
 
 <div class="hero">
-  <div class="hero-text">
-    <h1>DriveOnDemandJSR</h1>
-    <p>Cab & Driver Services in Jamshedpur</p>
-  </div>
+<div class="hero-text">
+<h1>DriveOnDemandJSR</h1>
+<p>Cab & Driver Services in Jamshedpur</p>
+</div>
 </div>
 
 <div class="section">
 <h2>Cab Booking</h2>
 <div class="card-container">
-  <div class="card">
-    <img src="images/swift-dzire.png" alt="Swift Dzire">
-    <div class="card-content">
-      <h3>Swift Dzire</h3>
-      <p>Starting ₹1000</p>
-      <button onclick="openForm('Swift Dzire Cab')">Book</button>
-    </div>
-  </div>
-  <div class="card">
-    <img src="images/ertiga.png" alt="Ertiga">
-    <div class="card-content">
-      <h3>Ertiga</h3>
-      <p>Starting ₹1200</p>
-      <button onclick="openForm('Ertiga Cab')">Book</button>
-    </div>
-  </div>
+  <div class="card"><img src="images/swift-dzire.png" alt=""><div class="card-content"><h3>Swift Dzire</h3><p>₹1000</p><button onclick="openForm('Swift Dzire Cab')">Book</button></div></div>
+  <div class="card"><img src="images/ertiga.png" alt=""><div class="card-content"><h3>Ertiga</h3><p>₹1200</p><button onclick="openForm('Ertiga Cab')">Book</button></div></div>
+  <div class="card"><img src="images/innova.png" alt=""><div class="card-content"><h3>Innova</h3><p>₹1500</p><button onclick="openForm('Innova Cab')">Book</button></div></div>
 </div>
 </div>
 
 <div class="section">
 <h2>Driver Services</h2>
 <div class="card-container">
-  <div class="card">
-    <img src="images/driver.png" alt="2 Hours Driver">
-    <div class="card-content">
-      <h3>2 Hours Local</h3>
-      <p>₹249</p>
-      <button onclick="openForm('2 Hours Driver')">Book</button>
-    </div>
-  </div>
-  <div class="card">
-    <img src="images/driver.png" alt="Outstation Driver">
-    <div class="card-content">
-      <h3>Outstation</h3>
-      <p>₹1000 / Day</p>
-      <button onclick="openForm('Outstation Driver')">Book</button>
-    </div>
-  </div>
+  <div class="card"><img src="images/driver.png" alt=""><div class="card-content"><h3>2 Hours Local</h3><p>₹249</p><button onclick="openForm('2 Hours Driver')">Book</button></div></div>
+  <div class="card"><img src="images/driver.png" alt=""><div class="card-content"><h3>4 Hours Local</h3><p>₹429</p><button onclick="openForm('4 Hours Driver')">Book</button></div></div>
+  <div class="card"><img src="images/driver.png" alt=""><div class="card-content"><h3>6 Hours Local</h3><p>₹629</p><button onclick="openForm('6 Hours Driver')">Book</button></div></div>
+  <div class="card"><img src="images/driver.png" alt=""><div class="card-content"><h3>8 Hours Local</h3><p>₹829</p><button onclick="openForm('8 Hours Driver')">Book</button></div></div>
+  <div class="card"><img src="images/driver.png" alt=""><div class="card-content"><h3>Outstation</h3><p>₹1000/day</p><button onclick="openForm('Outstation Driver')">Book</button></div></div>
 </div>
 </div>
 
+<div class="section">
+<h2>Outstation Fare Calculator</h2>
+<select id="drop" onchange="toggleCustom()">
+<option value="">Select Drop City</option>
+<option value="Ranchi">Ranchi</option>
+<option value="Dhanbad">Dhanbad</option>
+<option value="Bokaro">Bokaro</option>
+<option value="Kolkata">Kolkata</option>
+<option value="Patna">Patna</option>
+<option value="Gaya">Gaya</option>
+<option value="Other">Other</option>
+</select>
+<div id="customKM" class="hidden"><input type="number" id="customDistance" placeholder="Distance (KM)"></div>
+<button onclick="calculateFare()">Calculate Fare</button>
+<h3 id="result"></h3>
+<div id="bookNowContainer"></div>
+<div class="small-note">Fare calculated point-to-point. Waiting/multiple stops extra. Max 10 hrs driving rule.</div>
+</div>
+
+<div id="termsPopup" class="hidden"><div><h3>Terms & Conditions</h3><p>• Standard terms...</p><button onclick="closeTerms()">Close</button></div></div>
+
+<footer>© 2026 DriveOnDemandJSR | Jamshedpur</footer>
 <script src="script.js"></script>
 </body>
-</html>
+                                                          </html>
