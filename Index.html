@@ -3,69 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DriveOnDemandJSR | Premium Driver Services</title>
+<title>DriveOnDemandJSR | Cab & Driver Services</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
   <div class="logo">DriveOnDemandJSR</div>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
 </header>
 
-<section class="hero">
-  <h1>Premium Cab & Driver Services</h1>
-  <p>Reliable. Verified. Professional Drivers in Jamshedpur.</p>
-  <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-    Book Now
-  </button>
-</section>
-
-<section id="services" class="section">
-  <h2>Cab Services</h2>
-  <div class="card-container">
-    <div class="card" onclick="goToCheckout('Swift Dzire - ₹1000')">Swift Dzire - ₹1000</div>
-    <div class="card" onclick="goToCheckout('Ertiga - ₹1200')">Ertiga - ₹1200</div>
-    <div class="card" onclick="goToCheckout('Innova - ₹1500')">Innova - ₹1500</div>
+<div class="hero">
+  <div class="hero-text">
+    <h1>DriveOnDemandJSR</h1>
+    <p>Cab & Driver Services in Jamshedpur</p>
   </div>
-</section>
+</div>
 
-<section class="section dark">
-  <h2>Driver Plans</h2>
-  <div class="card-container">
-    <div class="card" onclick="goToCheckout('2 Hours - ₹249')">2 Hours - ₹249</div>
-    <div class="card" onclick="goToCheckout('4 Hours - ₹429')">4 Hours - ₹429</div>
-    <div class="card" onclick="goToCheckout('6 Hours - ₹629')">6 Hours - ₹629</div>
-    <div class="card" onclick="goToCheckout('8 Hours - ₹829')">8 Hours - ₹829</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Outstation Driver</h2>
-  <div class="card-container">
-    <div class="card" onclick="goToCheckout('Outstation Return - ₹1000/Day')">
-      Return - ₹1000/Day
-    </div>
-    <div class="card" onclick="goToCheckout('Drop Only - ₹4/KM + Food')">
-      Drop Only - ₹4/KM + Food
+<div class="section">
+<h2>Cab Booking</h2>
+<div class="card-container">
+  <div class="card">
+    <img src="images/swift-dzire.png" alt="Swift Dzire">
+    <div class="card-content">
+      <h3>Swift Dzire</h3>
+      <p>Starting ₹1000</p>
+      <button onclick="openForm('Swift Dzire Cab')">Book</button>
     </div>
   </div>
-</section>
+  <div class="card">
+    <img src="images/ertiga.png" alt="Ertiga">
+    <div class="card-content">
+      <h3>Ertiga</h3>
+      <p>Starting ₹1200</p>
+      <button onclick="openForm('Ertiga Cab')">Book</button>
+    </div>
+  </div>
+</div>
+</div>
 
-<footer id="contact">
-  <p>DriveOnDemandJSR | Jamshedpur</p>
-  <p>WhatsApp: 7903520120</p>
-</footer>
+<div class="section">
+<h2>Driver Services</h2>
+<div class="card-container">
+  <div class="card">
+    <img src="images/driver.png" alt="2 Hours Driver">
+    <div class="card-content">
+      <h3>2 Hours Local</h3>
+      <p>₹249</p>
+      <button onclick="openForm('2 Hours Driver')">Book</button>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/driver.png" alt="Outstation Driver">
+    <div class="card-content">
+      <h3>Outstation</h3>
+      <p>₹1000 / Day</p>
+      <button onclick="openForm('Outstation Driver')">Book</button>
+    </div>
+  </div>
+</div>
+</div>
 
-<script>
-function goToCheckout(service){
-  localStorage.setItem("selectedService", service);
-  window.location.href = "checkout.html";
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
