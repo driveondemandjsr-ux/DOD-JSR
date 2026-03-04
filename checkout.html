@@ -3,62 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Complete Booking | DriveOnDemandJSR</title>
+<title>Booking Checkout | DriveOnDemandJSR</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+  <div class="logo">DriveOnDemandJSR</div>
+</header>
 
-<section class="section booking">
-  <h2>Complete Booking</h2>
-
-  <form onsubmit="sendWhatsApp(event)">
-    <input type="text" id="service" readonly required>
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="tel" id="phone" placeholder="Mobile Number" required>
-    <input type="text" id="pickup" placeholder="Pickup Location" required>
-    <input type="date" id="date" required>
-    <input type="time" id="time" required>
-
-    <div class="payment-box">
-      <h3>Pay ₹249 Advance</h3>
-      <a class="pay-btn"
-      href="upi://pay?pa=tmps3012568575403903@slc&pn=DriveOnDemandJSR&am=249&cu=INR">
-      Pay Advance via UPI
-      </a>
-      <p>Advance ₹249 (Non-Refundable if cancelled by customer)</p>
-      <p>Overtime ₹80 per hour</p>
-    </div>
-
-    <input type="text" id="utr" placeholder="Enter UTR Number After Payment" required>
-    <button type="submit">Confirm Booking</button>
-  </form>
-</section>
+<div class="section">
+<h2>Booking Checkout</h2>
+<form id="checkoutForm">
+<input type="text" id="serviceName" readonly>
+<input type="text" placeholder="Your Name" required>
+<input type="tel" placeholder="Mobile Number" required pattern="[0-9]{10}">
+<input type="text" placeholder="Pickup Location" required>
+<input type="date" required>
+<input type="time" required>
+<textarea placeholder="Additional Notes"></textarea>
+<button type="submit">Confirm & Pay</button>
+</form>
+</div>
 
 <script>
-
-document.addEventListener("DOMContentLoaded", function(){
-  document.getElementById("service").value =
-    localStorage.getItem("selectedService") || "";
-});
-
-function sendWhatsApp(e){
-  e.preventDefault();
-
-  let msg =
-`Booking Request:
-Service: ${service.value}
-Name: ${name.value}
-Phone: ${phone.value}
-Pickup: ${pickup.value}
-Date: ${date.value}
-Time: ${time.value}
-UTR: ${utr.value}`;
-
-  let url = "https://wa.me/917903520120?text=" + encodeURIComponent(msg);
-  window.open(url, "_blank");
-}
-
+window.onload = function(){
+    var service = localStorage.getItem('bookingService') || '';
+    var fare = localStorage.getItem('bookingFare');
+    document.getElementById('serviceName').value = service + (fare ? " | ₹"+fare : "");
+    document.getElementById('checkoutForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        alert("Booking confirmed! Thank you.");
+        localStorage.clear();
+    });
+};
 </script>
-
 </body>
 </html>
