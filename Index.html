@@ -3,180 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DriveOnDemandJSR | Cab & Driver Services</title>
-
+<title>DriveOnDemandJSR</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-body{background:#f4f6f9;text-align:center;}
-header{background:#111;color:white;padding:15px;}
-.section{padding:40px 20px;}
-h1{margin:20px 0;}
-.card-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:20px;}
-.card{background:white;padding:20px;width:250px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-button{padding:10px 20px;margin:10px;border:none;background:#ff9800;color:white;border-radius:5px;cursor:pointer;}
-button:hover{background:#e68900;}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f8ff;color:#222;text-align:center;}
+header{background:linear-gradient(90deg,#0d47a1,#1976d2);color:white;padding:40px 20px;}
+header h1{margin:0;font-size:36px;}
+header p{margin-top:10px;font-size:18px;}
+.trust{background:#1565c0;color:white;padding:12px;font-weight:bold;letter-spacing:1px;}
+section{padding:40px 20px;max-width:1100px;margin:auto;}
+h2{color:#0d47a1;margin-bottom:30px;}
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.card{background:white;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);width:250px;text-align:center;}
+.card h3{margin-top:0;color:#1976d2;}
+.btn{display:inline-block;margin-top:15px;padding:10px 20px;background:#1976d2;color:white;border:none;border-radius:5px;cursor:pointer;font-size:14px;}
+.btn:hover{background:#0d47a1;}
+form{background:white;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);margin-top:20px;text-align:center;}
+input,select{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:5px;}
+footer{background:#0d47a1;color:white;padding:15px;margin-top:40px;}
 .hidden{display:none;}
-form{background:white;max-width:400px;margin:20px auto;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-form input,form textarea{width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:5px;}
-footer{background:#111;color:white;padding:20px;margin-top:40px;}
-.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none;justify-content:center;align-items:center;}
-.popup-content{background:white;padding:20px;width:90%;max-width:500px;border-radius:10px;max-height:80%;overflow:auto;text-align:left;}
-.whatsapp-float{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px 18px;
-border-radius:50px;
-font-size:14px;
-text-decoration:none;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-@media(max-width:768px){.card{width:100%;}}
+#dropFareText{margin-top:10px;font-weight:bold;color:#0d47a1;}
 </style>
 </head>
 <body>
 
 <header>
-<h2>DriveOnDemandJSR</h2>
+<h1>DriveOnDemandJSR</h1>
+<p><b>Best Cab & Driver Service Provider in Jamshedpur</b></p>
 </header>
 
-<h1>Cab & Driver Services in Jamshedpur</h1>
+<div class="trust">Safe • Reliable • Verified Drivers</div>
 
-<!-- CAB SECTION -->
-<div class="section">
+<!-- Cab Booking Section -->
+<section>
 <h2>Cab Booking</h2>
-<div class="card-container">
-<div class="card">
-<h3>Swift Dzire</h3>
-<p>Starting ₹1000</p>
-<button onclick="openForm('Swift Dzire Cab')">Book</button>
+<div class="cards">
+<div class="card"><h3>Swift Dzire</h3><p>₹1000</p><button class="btn" onclick="openCabForm('Swift Dzire - 1000')">Book Now</button></div>
+<div class="card"><h3>Ertiga</h3><p>₹1200</p><button class="btn" onclick="openCabForm('Ertiga - 1200')">Book Now</button></div>
+<div class="card"><h3>Innova</h3><p>₹1500</p><button class="btn" onclick="openCabForm('Innova - 1500')">Book Now</button></div>
 </div>
-<div class="card">
-<h3>Ertiga</h3>
-<p>Starting ₹1200</p>
-<button onclick="openForm('Ertiga Cab')">Book</button>
+</section>
+
+<!-- Local Driver Service -->
+<section>
+<h2>Local Driver Service</h2>
+<div class="cards">
+<div class="card"><h3>2 Hours</h3><p>₹249</p><button class="btn" onclick="openLocalForm('Driver 2hrs - 249')">Book Now</button></div>
+<div class="card"><h3>4 Hours</h3><p>₹429</p><button class="btn" onclick="openLocalForm('Driver 4hrs - 429')">Book Now</button></div>
+<div class="card"><h3>6 Hours</h3><p>₹629</p><button class="btn" onclick="openLocalForm('Driver 6hrs - 629')">Book Now</button></div>
+<div class="card"><h3>8 Hours</h3><p>₹829</p><button class="btn" onclick="openLocalForm('Driver 8hrs - 829')">Book Now</button></div>
 </div>
-<div class="card">
-<h3>Innova</h3>
-<p>Starting ₹1500</p>
-<button onclick="openForm('Innova Cab')">Book</button>
+</section>
+
+<!-- Outstation Driver Service -->
+<section>
+<h2>Outstation Driver Service</h2>
+<div class="cards">
+<div class="card"><h3>Return Journey</h3><p>₹1000/day</p>
+<button class="btn" onclick="openReturnJourney('Outstation Return Journey - 1000/day')">Book Now</button>
 </div>
+<div class="card"><h3>Drop Only</h3><p>Fare Calculator</p>
+<button class="btn" onclick="document.getElementById('dropForm').classList.toggle('hidden')">Calculate Fare</button>
 </div>
 </div>
 
-<!-- DRIVER SECTION -->
-<div class="section">
-<h2>Driver Services</h2>
-<div class="card-container">
-<div class="card"><h3>2 Hours</h3><p>₹249</p><button onclick="openForm('2 Hours Driver')">Book</button></div>
-<div class="card"><h3>4 Hours</h3><p>₹429</p><button onclick="openForm('4 Hours Driver')">Book</button></div>
-<div class="card"><h3>6 Hours</h3><p>₹629</p><button onclick="openForm('6 Hours Driver')">Book</button></div>
-<div class="card"><h3>8 Hours</h3><p>₹829</p><button onclick="openForm('8 Hours Driver')">Book</button></div>
-<div class="card"><h3>Outstation Driver</h3><p>₹1500 / Day</p><button onclick="openForm('Outstation Driver')">Book</button></div>
+<div id="dropForm" class="hidden" style="margin-top:20px; max-width:400px; margin:auto;text-align:center;">
+<select id="dropCity" onchange="calculateDropFare()">
+<option value="">Select City</option>
+<option value="Ranchi">Ranchi</option>
+<option value="Bokaro">Bokaro</option>
+<option value="Dhanbad">Dhanbad</option>
+<option value="Kolkata">Kolkata</option>
+<option value="Gaya">Gaya</option>
+<option value="Patna">Patna</option>
+<option value="Banaras">Banaras</option>
+<option value="Other">Other City</option>
+</select>
+<input type="number" id="dropKMs" placeholder="Approx KMs (for Other City)" class="hidden" oninput="calculateDropFare()">
+<p id="dropFareText"></p>
+<button class="btn" onclick="bookDropOnly()">Book Drop Only</button>
 </div>
-</div>
+</section>
 
-<!-- OUTSTATION CALCULATOR -->
-<div class="section">
-<h2>Outstation Fare Calculator</h2>
-<input type="number" id="km" placeholder="Enter Total KM">
-<button onclick="calculateFare()">Calculate Fare</button>
-<h3 id="fareResult"></h3>
-</div>
-
-<!-- BOOKING FORM -->
-<div id="formSection" class="hidden">
+<!-- Booking Form -->
+<section id="bookingSection" class="hidden">
 <h2>Booking Form</h2>
-<form onsubmit="return sendWhatsApp()">
-<input type="text" id="serviceName" readonly>
-<input type="text" id="name" placeholder="Your Name" required>
-<input type="tel" id="mobile" placeholder="Mobile Number" required>
-<input type="text" id="pickup" placeholder="Pickup Location" required>
-<input type="date" id="date" required>
-<input type="time" id="time" required>
-<textarea id="notes" placeholder="Additional Notes"></textarea>
+<form id="bookingForm">
+<input type="text" id="service" readonly>
+<input type="text" placeholder="Your Name" id="name" required>
+<input type="tel" placeholder="Mobile Number" id="mobile" required>
 
-<label>
-<input type="checkbox" required>
-I agree to <span style="color:blue;cursor:pointer;" onclick="openTerms()">Terms & Conditions</span>
-</label>
+<div id="pickupInputs" class="hidden">
+<input type="text" placeholder="Pickup Location" id="pickupLocation" required>
+<input type="date" id="pickupDate" required>
+<input type="time" id="pickupTime" required>
+</div>
 
-<h3 style="color:green;">Advance Payment: ₹249 Only</h3>
-<p>Please pay ₹249 to confirm booking.</p>
-<p><strong>UPI ID:</strong> yourupi@upi</p>
-<p style="font-size:13px;color:red;">*Booking confirmed after advance payment.</p>
+<select id="city" class="hidden" onchange="checkCity()">
+<option value="">Select City</option>
+<option value="Ranchi">Ranchi</option>
+<option value="Dhanbad">Dhanbad</option>
+<option value="Bokaro">Bokaro</option>
+<option value="Kolkata">Kolkata</option>
+<option value="Patna">Patna</option>
+<option value="Other">Other City</option>
+</select>
 
-<button type="submit">Submit & Send WhatsApp</button>
+<input type="number" placeholder="Total KMs (Only for Other City)" id="kms" class="hidden">
+
+<p><b>Advance Payment: ₹249 (Non-Refundable)</b></p>
+<button type="button" class="btn" onclick="payAdvanceUPI()">Pay Advance ₹249</button>
+
+<div id="utrSection" class="hidden">
+<input type="text" placeholder="Ref / UTR Number" id="utrNo" required>
+</div>
+
+<div style="margin-top:10px;font-size:14px;">
+<input type="checkbox" id="terms"><label for="terms"> I agree to Terms & Conditions</label>
+</div>
+
+<button type="button" class="btn" id="submitBtn" onclick="submitWhatsApp()" disabled>Submit Booking (WhatsApp)</button>
 </form>
-</div>
+</section>
 
-<!-- TERMS POPUP -->
-<div class="popup" id="termsPopup">
-<div class="popup-content">
-<h3>Terms & Conditions</h3>
-<p>- ₹249 advance mandatory.</p>
-<p>- Cancellation before 24 hrs refundable.</p>
-<p>- Outstation charges based on KM.</p>
-<p>- Driver duty 12 hours max per day.</p>
-<button onclick="closeTerms()">Close</button>
-</div>
-</div>
-
-<footer>
-© 2026 DriveOnDemandJSR | Jamshedpur
-</footer>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/917903520120" class="whatsapp-float" target="_blank">
-Chat on WhatsApp
-</a>
+<footer>© 2026 DriveOnDemandJSR | Jamshedpur</footer>
 
 <script>
-function openForm(service){
-document.getElementById("formSection").classList.remove("hidden");
-document.getElementById("serviceName").value=service;
-window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+// CAB Booking Form
+function openCabForm(service){
+    document.getElementById("bookingSection").classList.remove("hidden");
+    document.getElementById("service").value = service;
+    document.getElementById("pickupInputs").classList.remove("hidden");
+    document.getElementById("city").classList.add("hidden");
+    document.getElementById("kms").classList.add("hidden");
+    document.getElementById("utrSection").classList.add("hidden");
+    document.getElementById("submitBtn").disabled = true;
+    window.scrollTo(0,document.body.scrollHeight);
 }
 
-function calculateFare(){
-let km=document.getElementById("km").value;
-if(km==""){alert("Enter KM");return;}
-let fare=km*12;
-document.getElementById("fareResult").innerText="Estimated Fare: ₹"+fare;
+// Local Driver Form
+function openLocalForm(service){
+    document.getElementById("bookingSection").classList.remove("hidden");
+    document.getElementById("service").value = service;
+    document.getElementById("pickupInputs").classList.remove("hidden");
+    document.getElementById("city").classList.add("hidden");
+    document.getElementById("kms").classList.add("hidden");
+    document.getElementById("utrSection").classList.add("hidden");
+    document.getElementById("submitBtn").disabled = true;
+    window.scrollTo(0,document.body.scrollHeight);
 }
 
-function openTerms(){
-document.getElementById("termsPopup").style.display="flex";
+// Outstation Return Journey Form
+function openReturnJourney(service){
+    document.getElementById("bookingSection").classList.remove("hidden");
+    document.getElementById("service").value = service;
+    document.getElementById("pickupInputs").classList.remove("hidden");
+    document.getElementById("city").classList.add("hidden");
+    document.getElementById("kms").classList.add("hidden");
+    document.getElementById("utrSection").classList.add("hidden");
+    document.getElementById("submitBtn").disabled = true;
+    window.scrollTo(0,document.body.scrollHeight);
 }
-function closeTerms(){
-document.getElementById("termsPopup").style.display="none";
+
+// City check for Other KMs
+function checkCity(){
+    let city=document.getElementById("city").value;
+    let kms=document.getElementById("kms");
+    if(city==="Other"){ kms.classList.remove("hidden"); }
+    else{ kms.classList.add("hidden"); }
 }
 
-function sendWhatsApp(){
-let service=document.getElementById("serviceName").value;
-let name=document.getElementById("name").value;
-let mobile=document.getElementById("mobile").value;
-let pickup=document.getElementById("pickup").value;
-let date=document.getElementById("date").value;
-let time=document.getElementById("time").value;
-let notes=document.getElementById("notes").value;
+// Drop Only fare calculation
+function calculateDropFare(){
+    let city=document.getElementById("dropCity").value;
+    let kmsInput=document.getElementById("dropKMs");
+    let kms=parseInt(kmsInput.value)||0;
+    let fare=0;
+    kmsInput.style.display='none';
 
-let message=`Booking Request:
-Service: ${service}
-Name: ${name}
-Mobile: ${mobile}
-Pickup: ${pickup}
-Date: ${date}
-Time: ${time}
-Notes: ${notes}
+    if(city==='Ranchi' || city==='Bokaro' || city==='Dhanbad' || city==='Kolkata'){ fare=1500; }
+    else if(city==='Gaya' || city==='Patna' || city==='Banaras'){ fare=3000; }
+    else if(city==='Other'){
+        kmsInput.style.display='block';
+        if(kms>600){ fare=kms*5; }
+        else if(kms>0){ fare=1000*2; }
+        else { fare=0; }
+    }
 
-Advance ₹249 Paid.`;
+    if(fare>0){
+        document.getElementById("service").value='Outstation Drop Only - ₹'+fare;
+        document.getElementById("dropFareText").innerText='Calculated Fare: ₹'+fare;
+    } else{
+        document.getElementById("service").value='Outstation Drop Only';
+        document.getElementById("dropFareText").innerText='';
+    }
+}
 
-let url="https://wa.me/917903520120?text="+encodeURIComponent(message);
-window.open(url,'_blank');
-return false;
+// Book Drop Only
+function bookDropOnly(){
+    let service=document.getElementById("service").value;
+    if(service==='Outstation Drop Only'){ alert("Please select city and calculate fare first"); return; }
+    openReturnJourney(service); // Reuse same form layout
+}
+
+// Pay Advance via UPI
+function payAdvanceUPI(){
+    let upiID="tmps3012568575403903@slc";
+    window.location.href="upi://pay?pa="+upiID+"&pn=DriveOnDemandJSR&am=249&cu=INR";
+    document.getElementById("utrSection").classList.remove("hidden");
+    document.getElementById("submitBtn").disabled=false;
+}
+
+// Submit Booking via WhatsApp
+function submitWhatsApp(){
+    if(!document.getElementById("terms").checked){
+        alert("Please accept Terms & Conditions");
+        return;
+    }
+    let name=document.getElementById("name").value;
+    let mobile=document.getElementById("mobile").value;
+    let service=document.getElementById("service").value;
+    let city=document.getElementById("city").classList.contains("hidden") ? "N/A" : document.getElementById("city").value;
+    let pickupLocation=document.getElementById("pickupLocation").value||'';
+    let pickupDate=document.getElementById("pickupDate").value||'';
+    let pickupTime=document.getElementById("pickupTime").value||'';
+    let kms=document.getElementById("kms").value||'';
+    let utr=document.getElementById("utrNo").value||'';
+
+    if(document.getElementById("utrSection").classList.contains("hidden")){ utr="N/A"; }
+    else if(!utr){ alert("Please enter Ref / UTR Number after payment"); return; }
+
+    let message="Booking Request:%0AName: "+name+
+    "%0AMobile: "+mobile+
+    "%0AService: "+service+
+    "%0ACity/Pickup: "+city+
+    (pickupLocation?("%0APickup Location: "+pickupLocation):"")+
+    (pickupDate?("%0APickup Date: "+pickupDate):"")+
+    (pickupTime?("%0APickup Time: "+pickupTime):"")+
+    (kms?("%0AKMs: "+kms):"")+
+    "%0AAdvance: 249 Paid"+
+    "%0ARef/UTR No: "+utr;
+
+    window.open("https://wa.me/917903520120?text="+message);
 }
 </script>
 
