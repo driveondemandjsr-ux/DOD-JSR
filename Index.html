@@ -33,7 +33,6 @@ footer{background:#0d47a1;color:white;padding:15px;margin-top:40px;}
 
 <div class="trust">Safe • Reliable • Verified Drivers</div>
 
-<!-- Cab Booking Section -->
 <section>
 <h2>Cab Booking</h2>
 <div class="cards">
@@ -43,7 +42,6 @@ footer{background:#0d47a1;color:white;padding:15px;margin-top:40px;}
 </div>
 </section>
 
-<!-- Local Driver Service -->
 <section>
 <h2>Local Driver Service</h2>
 <div class="cards">
@@ -54,13 +52,13 @@ footer{background:#0d47a1;color:white;padding:15px;margin-top:40px;}
 </div>
 </section>
 
-<!-- Outstation Driver Service -->
 <section>
 <h2>Outstation Driver Service</h2>
 <div class="cards">
 <div class="card"><h3>Return Journey</h3><p>₹1000/day</p>
 <button class="btn" onclick="openReturnJourney('Outstation Return Journey - 1000/day')">Book Now</button>
 </div>
+
 <div class="card"><h3>Drop Only</h3><p>Fare Calculator</p>
 <button class="btn" onclick="document.getElementById('dropForm').classList.toggle('hidden')">Calculate Fare</button>
 </div>
@@ -78,173 +76,212 @@ footer{background:#0d47a1;color:white;padding:15px;margin-top:40px;}
 <option value="Banaras">Banaras</option>
 <option value="Other">Other City</option>
 </select>
+
 <input type="number" id="dropKMs" placeholder="Approx KMs (for Other City)" class="hidden" oninput="calculateDropFare()">
+
 <p id="dropFareText"></p>
+
 <button class="btn" onclick="bookDropOnly()">Book Drop Only</button>
 </div>
 </section>
 
-<!-- Booking Form -->
 <section id="bookingSection" class="hidden">
 <h2>Booking Form</h2>
+
 <form id="bookingForm">
+
 <input type="text" id="service" readonly>
+
 <input type="text" placeholder="Your Name" id="name" required>
+
 <input type="tel" placeholder="Mobile Number" id="mobile" required>
 
 <div id="pickupInputs" class="hidden">
+
 <input type="text" placeholder="Pickup Location" id="pickupLocation" required>
+
 <input type="date" id="pickupDate" required>
+
 <input type="time" id="pickupTime" required>
+
 </div>
 
-<select id="city" class="hidden" onchange="checkCity()">
-<option value="">Select City</option>
-<option value="Ranchi">Ranchi</option>
-<option value="Dhanbad">Dhanbad</option>
-<option value="Bokaro">Bokaro</option>
-<option value="Kolkata">Kolkata</option>
-<option value="Patna">Patna</option>
-<option value="Other">Other City</option>
-</select>
-
-<input type="number" placeholder="Total KMs (Only for Other City)" id="kms" class="hidden">
-
 <p><b>Advance Payment: ₹249 (Non-Refundable)</b></p>
+
 <button type="button" class="btn" onclick="payAdvanceUPI()">Pay Advance ₹249</button>
 
 <div id="utrSection" class="hidden">
+
 <input type="text" placeholder="Ref / UTR Number" id="utrNo" required>
+
 </div>
 
 <div style="margin-top:10px;font-size:14px;">
-<input type="checkbox" id="terms"><label for="terms"> I agree to Terms & Conditions</label>
+
+<input type="checkbox" id="terms">
+
+<label for="terms"> I agree to Terms & Conditions</label>
+
 </div>
 
-<button type="button" class="btn" id="submitBtn" onclick="submitWhatsApp()" disabled>Submit Booking (WhatsApp)</button>
+<button type="button" class="btn" id="submitBtn" onclick="submitWhatsApp()" disabled>
+
+Submit Booking (WhatsApp)
+
+</button>
+
 </form>
+
 </section>
 
 <footer>© 2026 DriveOnDemandJSR | Jamshedpur</footer>
 
 <script>
-// CAB Booking Form
+
 function openCabForm(service){
-    document.getElementById("bookingSection").classList.remove("hidden");
-    document.getElementById("service").value = service;
-    document.getElementById("pickupInputs").classList.remove("hidden");
-    document.getElementById("city").classList.add("hidden");
-    document.getElementById("kms").classList.add("hidden");
-    document.getElementById("utrSection").classList.add("hidden");
-    document.getElementById("submitBtn").disabled = true;
-    window.scrollTo(0,document.body.scrollHeight);
+
+document.getElementById("bookingSection").classList.remove("hidden");
+
+document.getElementById("service").value = service;
+
+document.getElementById("pickupInputs").classList.remove("hidden");
+
+document.getElementById("utrSection").classList.add("hidden");
+
+document.getElementById("submitBtn").disabled = true;
+
+window.scrollTo(0,document.body.scrollHeight);
+
 }
 
-// Local Driver Form
 function openLocalForm(service){
-    document.getElementById("bookingSection").classList.remove("hidden");
-    document.getElementById("service").value = service;
-    document.getElementById("pickupInputs").classList.remove("hidden");
-    document.getElementById("city").classList.add("hidden");
-    document.getElementById("kms").classList.add("hidden");
-    document.getElementById("utrSection").classList.add("hidden");
-    document.getElementById("submitBtn").disabled = true;
-    window.scrollTo(0,document.body.scrollHeight);
+
+openCabForm(service);
+
 }
 
-// Outstation Return Journey Form
 function openReturnJourney(service){
-    document.getElementById("bookingSection").classList.remove("hidden");
-    document.getElementById("service").value = service;
-    document.getElementById("pickupInputs").classList.remove("hidden");
-    document.getElementById("city").classList.add("hidden");
-    document.getElementById("kms").classList.add("hidden");
-    document.getElementById("utrSection").classList.add("hidden");
-    document.getElementById("submitBtn").disabled = true;
-    window.scrollTo(0,document.body.scrollHeight);
+
+openCabForm(service);
+
 }
 
-// City check for Other KMs
-function checkCity(){
-    let city=document.getElementById("city").value;
-    let kms=document.getElementById("kms");
-    if(city==="Other"){ kms.classList.remove("hidden"); }
-    else{ kms.classList.add("hidden"); }
-}
-
-// Drop Only fare calculation
 function calculateDropFare(){
-    let city=document.getElementById("dropCity").value;
-    let kmsInput=document.getElementById("dropKMs");
-    let kms=parseInt(kmsInput.value)||0;
-    let fare=0;
-    kmsInput.style.display='none';
 
-    if(city==='Ranchi' || city==='Bokaro' || city==='Dhanbad' || city==='Kolkata'){ fare=1500; }
-    else if(city==='Gaya' || city==='Patna' || city==='Banaras'){ fare=3000; }
-    else if(city==='Other'){
-        kmsInput.style.display='block';
-        if(kms>600){ fare=kms*5; }
-        else if(kms>0){ fare=1000*2; }
-        else { fare=0; }
-    }
+let city=document.getElementById("dropCity").value;
 
-    if(fare>0){
-        document.getElementById("service").value='Outstation Drop Only - ₹'+fare;
-        document.getElementById("dropFareText").innerText='Calculated Fare: ₹'+fare;
-    } else{
-        document.getElementById("service").value='Outstation Drop Only';
-        document.getElementById("dropFareText").innerText='';
-    }
+let kmsInput=document.getElementById("dropKMs");
+
+let kms=parseInt(kmsInput.value)||0;
+
+let fare=0;
+
+kmsInput.style.display='none';
+
+if(city==='Ranchi'||city==='Bokaro'||city==='Dhanbad'||city==='Kolkata'){fare=1500;}
+
+else if(city==='Gaya'||city==='Patna'||city==='Banaras'){fare=3000;}
+
+else if(city==='Other'){
+
+kmsInput.style.display='block';
+
+if(kms>400){fare=kms*5;}
+
+else if(kms>0){fare=2000;}
+
 }
 
-// Book Drop Only
+if(fare>0){
+
+document.getElementById("service").value='Outstation Drop Only - ₹'+fare;
+
+document.getElementById("dropFareText").innerText='Calculated Fare: ₹'+fare;
+
+}else{
+
+document.getElementById("service").value='Outstation Drop Only';
+
+document.getElementById("dropFareText").innerText='';
+
+}
+
+}
+
 function bookDropOnly(){
-    let service=document.getElementById("service").value;
-    if(service==='Outstation Drop Only'){ alert("Please select city and calculate fare first"); return; }
-    openReturnJourney(service); // Reuse same form layout
+
+let service=document.getElementById("service").value;
+
+if(service==='Outstation Drop Only'){alert("Please calculate fare first");return;}
+
+openReturnJourney(service);
+
 }
 
-// Pay Advance via UPI
 function payAdvanceUPI(){
-    let upiID="tmps3012568575403903@slc";
-    window.location.href="upi://pay?pa="+upiID+"&pn=DriveOnDemandJSR&am=249&cu=INR";
-    document.getElementById("utrSection").classList.remove("hidden");
-    document.getElementById("submitBtn").disabled=false;
+
+let upiID="tmps3012568575403903@slc";
+
+window.location.href="upi://pay?pa="+upiID+"&pn=DriveOnDemandJSR&am=249&cu=INR";
+
+document.getElementById("utrSection").classList.remove("hidden");
+
+document.getElementById("submitBtn").disabled=false;
+
 }
 
-// Submit Booking via WhatsApp
 function submitWhatsApp(){
-    if(!document.getElementById("terms").checked){
-        alert("Please accept Terms & Conditions");
-        return;
-    }
-    let name=document.getElementById("name").value;
-    let mobile=document.getElementById("mobile").value;
-    let service=document.getElementById("service").value;
-    let city=document.getElementById("city").classList.contains("hidden") ? "N/A" : document.getElementById("city").value;
-    let pickupLocation=document.getElementById("pickupLocation").value||'';
-    let pickupDate=document.getElementById("pickupDate").value||'';
-    let pickupTime=document.getElementById("pickupTime").value||'';
-    let kms=document.getElementById("kms").value||'';
-    let utr=document.getElementById("utrNo").value||'';
 
-    if(document.getElementById("utrSection").classList.contains("hidden")){ utr="N/A"; }
-    else if(!utr){ alert("Please enter Ref / UTR Number after payment"); return; }
+if(!document.getElementById("terms").checked){
 
-    let message="Booking Request:%0AName: "+name+
-    "%0AMobile: "+mobile+
-    "%0AService: "+service+
-    "%0ACity/Pickup: "+city+
-    (pickupLocation?("%0APickup Location: "+pickupLocation):"")+
-    (pickupDate?("%0APickup Date: "+pickupDate):"")+
-    (pickupTime?("%0APickup Time: "+pickupTime):"")+
-    (kms?("%0AKMs: "+kms):"")+
-    "%0AAdvance: 249 Paid"+
-    "%0ARef/UTR No: "+utr;
+alert("Please accept Terms & Conditions");
 
-    window.open("https://wa.me/917903520120?text="+message);
+return;
+
 }
+
+let name=document.getElementById("name").value;
+
+let mobile=document.getElementById("mobile").value;
+
+let service=document.getElementById("service").value;
+
+let pickupLocation=document.getElementById("pickupLocation").value||'';
+
+let pickupDate=document.getElementById("pickupDate").value||'';
+
+let pickupTime=document.getElementById("pickupTime").value||'';
+
+let utr=document.getElementById("utrNo").value||'';
+
+if(!utr){
+
+alert("Please enter Ref / UTR Number");
+
+return;
+
+}
+
+let message="Booking Request:%0AName: "+name+
+
+"%0AMobile: "+mobile+
+
+"%0AService: "+service+
+
+"%0APickup Location: "+pickupLocation+
+
+"%0APickup Date: "+pickupDate+
+
+"%0APickup Time: "+pickupTime+
+
+"%0AAdvance: 249 Paid"+
+
+"%0ARef/UTR No: "+utr;
+
+window.open("https://wa.me/917903520120?text="+message);
+
+}
+
 </script>
 
 </body>
