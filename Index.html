@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DriveOnDemandJSR</title>
+
 <style>
 body{margin:0;font-family:Arial,sans-serif;background:#f4f8ff;color:#222;text-align:center;}
 header{background:linear-gradient(90deg,#0d47a1,#1976d2);color:white;padding:40px 20px;}
@@ -24,6 +25,7 @@ footer{background:#0d47a1;color:white;padding:15px;margin-top:40px;}
 #dropFareText{margin-top:10px;font-weight:bold;color:#0d47a1;}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -36,35 +38,80 @@ footer{background:#0d47a1;color:white;padding:15px;margin-top:40px;}
 <section>
 <h2>Cab Booking</h2>
 <div class="cards">
-<div class="card"><h3>Swift Dzire</h3><p>₹1000</p><button class="btn" onclick="openCabForm('Swift Dzire - 1000')">Book Now</button></div>
-<div class="card"><h3>Ertiga</h3><p>₹1200</p><button class="btn" onclick="openCabForm('Ertiga - 1200')">Book Now</button></div>
-<div class="card"><h3>Innova</h3><p>₹1500</p><button class="btn" onclick="openCabForm('Innova - 1500')">Book Now</button></div>
+
+<div class="card">
+<h3>Swift Dzire</h3>
+<p>₹1000</p>
+<button class="btn" onclick="openCabForm('Swift Dzire - 1000')">Book Now</button>
+</div>
+
+<div class="card">
+<h3>Ertiga</h3>
+<p>₹1200</p>
+<button class="btn" onclick="openCabForm('Ertiga - 1200')">Book Now</button>
+</div>
+
+<div class="card">
+<h3>Innova</h3>
+<p>₹1500</p>
+<button class="btn" onclick="openCabForm('Innova - 1500')">Book Now</button>
+</div>
+
 </div>
 </section>
 
 <section>
 <h2>Local Driver Service</h2>
 <div class="cards">
-<div class="card"><h3>2 Hours</h3><p>₹249</p><button class="btn" onclick="openLocalForm('Driver 2hrs - 249')">Book Now</button></div>
-<div class="card"><h3>4 Hours</h3><p>₹429</p><button class="btn" onclick="openLocalForm('Driver 4hrs - 429')">Book Now</button></div>
-<div class="card"><h3>6 Hours</h3><p>₹629</p><button class="btn" onclick="openLocalForm('Driver 6hrs - 629')">Book Now</button></div>
-<div class="card"><h3>8 Hours</h3><p>₹829</p><button class="btn" onclick="openLocalForm('Driver 8hrs - 829')">Book Now</button></div>
+
+<div class="card">
+<h3>2 Hours</h3>
+<p>₹249</p>
+<button class="btn" onclick="openLocalForm('Driver 2hrs - 249')">Book Now</button>
+</div>
+
+<div class="card">
+<h3>4 Hours</h3>
+<p>₹429</p>
+<button class="btn" onclick="openLocalForm('Driver 4hrs - 429')">Book Now</button>
+</div>
+
+<div class="card">
+<h3>6 Hours</h3>
+<p>₹629</p>
+<button class="btn" onclick="openLocalForm('Driver 6hrs - 629')">Book Now</button>
+</div>
+
+<div class="card">
+<h3>8 Hours</h3>
+<p>₹829</p>
+<button class="btn" onclick="openLocalForm('Driver 8hrs - 829')">Book Now</button>
+</div>
+
 </div>
 </section>
 
 <section>
 <h2>Outstation Driver Service</h2>
+
 <div class="cards">
-<div class="card"><h3>Return Journey</h3><p>₹1000/day</p>
+
+<div class="card">
+<h3>Return Journey</h3>
+<p>₹1000/day</p>
 <button class="btn" onclick="openReturnJourney('Outstation Return Journey - 1000/day')">Book Now</button>
 </div>
 
-<div class="card"><h3>Drop Only</h3><p>Fare Calculator</p>
+<div class="card">
+<h3>Drop Only</h3>
+<p>Fare Calculator</p>
 <button class="btn" onclick="document.getElementById('dropForm').classList.toggle('hidden')">Calculate Fare</button>
 </div>
+
 </div>
 
-<div id="dropForm" class="hidden" style="margin-top:20px; max-width:400px; margin:auto;text-align:center;">
+<div id="dropForm" class="hidden" style="margin-top:20px;max-width:400px;margin:auto;text-align:center;">
+
 <select id="dropCity" onchange="calculateDropFare()">
 <option value="">Select City</option>
 <option value="Ranchi">Ranchi</option>
@@ -82,10 +129,13 @@ footer{background:#0d47a1;color:white;padding:15px;margin-top:40px;}
 <p id="dropFareText"></p>
 
 <button class="btn" onclick="bookDropOnly()">Book Drop Only</button>
+
 </div>
+
 </section>
 
 <section id="bookingSection" class="hidden">
+
 <h2>Booking Form</h2>
 
 <form id="bookingForm">
@@ -141,13 +191,9 @@ Submit Booking (WhatsApp)
 function openCabForm(service){
 
 document.getElementById("bookingSection").classList.remove("hidden");
-
 document.getElementById("service").value = service;
-
 document.getElementById("pickupInputs").classList.remove("hidden");
-
 document.getElementById("utrSection").classList.add("hidden");
-
 document.getElementById("submitBtn").disabled = true;
 
 window.scrollTo(0,document.body.scrollHeight);
@@ -155,53 +201,57 @@ window.scrollTo(0,document.body.scrollHeight);
 }
 
 function openLocalForm(service){
-
 openCabForm(service);
-
 }
 
 function openReturnJourney(service){
-
 openCabForm(service);
-
 }
 
 function calculateDropFare(){
 
 let city=document.getElementById("dropCity").value;
-
 let kmsInput=document.getElementById("dropKMs");
-
 let kms=parseInt(kmsInput.value)||0;
 
 let fare=0;
 
 kmsInput.style.display='none';
 
-if(city==='Ranchi'||city==='Bokaro'||city==='Dhanbad'||city==='Kolkata'){fare=1500;}
+if(city==='Ranchi'||city==='Bokaro'||city==='Dhanbad'||city==='Kolkata'){
+fare=1500;
+}
 
-else if(city==='Gaya'||city==='Patna'||city==='Banaras'){fare=3000;}
+else if(city==='Gaya'||city==='Patna'||city==='Banaras'){
+fare=3000;
+}
 
 else if(city==='Other'){
 
 kmsInput.style.display='block';
 
-if(kms>400){fare=kms*5;}
+if(kms>600){
+fare=kms*5;
+}
 
-else if(kms>0){fare=2000;}
+else if(kms>400){
+fare=3000;
+}
+
+else if(kms>0){
+fare=2000;
+}
 
 }
 
 if(fare>0){
 
 document.getElementById("service").value='Outstation Drop Only - ₹'+fare;
-
 document.getElementById("dropFareText").innerText='Calculated Fare: ₹'+fare;
 
 }else{
 
 document.getElementById("service").value='Outstation Drop Only';
-
 document.getElementById("dropFareText").innerText='';
 
 }
@@ -212,7 +262,10 @@ function bookDropOnly(){
 
 let service=document.getElementById("service").value;
 
-if(service==='Outstation Drop Only'){alert("Please calculate fare first");return;}
+if(service==='Outstation Drop Only'){
+alert("Please calculate fare first");
+return;
+}
 
 openReturnJourney(service);
 
@@ -225,7 +278,6 @@ let upiID="tmps3012568575403903@slc";
 window.location.href="upi://pay?pa="+upiID+"&pn=DriveOnDemandJSR&am=249&cu=INR";
 
 document.getElementById("utrSection").classList.remove("hidden");
-
 document.getElementById("submitBtn").disabled=false;
 
 }
@@ -233,49 +285,30 @@ document.getElementById("submitBtn").disabled=false;
 function submitWhatsApp(){
 
 if(!document.getElementById("terms").checked){
-
 alert("Please accept Terms & Conditions");
-
 return;
-
 }
 
 let name=document.getElementById("name").value;
-
 let mobile=document.getElementById("mobile").value;
-
 let service=document.getElementById("service").value;
-
 let pickupLocation=document.getElementById("pickupLocation").value||'';
-
 let pickupDate=document.getElementById("pickupDate").value||'';
-
 let pickupTime=document.getElementById("pickupTime").value||'';
-
 let utr=document.getElementById("utrNo").value||'';
 
 if(!utr){
-
 alert("Please enter Ref / UTR Number");
-
 return;
-
 }
 
 let message="Booking Request:%0AName: "+name+
-
 "%0AMobile: "+mobile+
-
 "%0AService: "+service+
-
 "%0APickup Location: "+pickupLocation+
-
 "%0APickup Date: "+pickupDate+
-
 "%0APickup Time: "+pickupTime+
-
 "%0AAdvance: 249 Paid"+
-
 "%0ARef/UTR No: "+utr;
 
 window.open("https://wa.me/917903520120?text="+message);
