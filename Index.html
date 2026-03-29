@@ -67,6 +67,17 @@ section {
     margin: auto;
 }
 
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    color: var(--primary);
+    border-bottom: 4px solid var(--accent);
+}
+
 .service-box {
     background: var(--glass);
     backdrop-filter: blur(10px);
@@ -199,7 +210,10 @@ footer {
 <header>
     <h1>DriveOnDemandJSR</h1>
     <p>Professional Cabs & Expert Drivers at Your Doorstep</p>
-    <button class="btn" style="background:var(--accent); color:#333; margin-top:20px;" onclick="document.getElementById('cab-section').scrollIntoView()">Book Now</button>
+    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+        <button class="btn" style="background:var(--accent); color:#333; margin-top:20px;" onclick="document.getElementById('cab-main-section').scrollIntoView()">Book a Cab</button>
+        <button class="btn" style="background:white; color:var(--primary); margin-top:20px;" onclick="document.getElementById('driver-main-section').scrollIntoView()">Hire a Driver</button>
+    </div>
 </header>
 
 <div class="trust-bar">
@@ -208,11 +222,12 @@ footer {
     <span>🕒 24/7 Service</span>
 </div>
 
-<section id="cab-section">
+<section id="cab-main-section">
+    <h2 class="section-title">🚕 CAB BOOKING (Vehicles)</h2>
 
     <div class="service-box">
-        <h3>🚕 Cab Booking</h3>
-        <p>Premium cars for your comfort</p>
+        <h3>🚗 Local Cab Fleet</h3>
+        <p>Premium cars for your city comfort</p>
         <button class="btn btn-outline" onclick="toggle('cab')">View Fleet</button>
         <div id="cab" class="hidden cards">
             <div class="card"><h4>Swift Dzire</h4><p>₹1000</p><button class="btn" onclick="openForm('Cab - Swift Dzire',1000)">Book Now</button></div>
@@ -222,46 +237,8 @@ footer {
     </div>
 
     <div class="service-box">
-        <h3>👨‍✈️ Local Driver Service</h3>
-        <p>Hire experts to drive your car</p>
-        <button class="btn btn-outline" onclick="toggle('local')">Check Hourly Plans</button>
-        <div id="local" class="hidden cards">
-            <div class="card"><h4>2 Hours</h4><p>₹249</p><button class="btn" onclick="openForm('Driver 2 Hours',249)">Book</button></div>
-            <div class="card"><h4>4 Hours</h4><p>₹429</p><button class="btn" onclick="openForm('Driver 4 Hours',429)">Book</button></div>
-            <div class="card"><h4>6 Hours</h4><p>₹629</p><button class="btn" onclick="openForm('Driver 6 Hours',629)">Book</button></div>
-            <div class="card"><h4>8 Hours</h4><p>₹829</p><button class="btn" onclick="openForm('Driver 8 Hours',829)">Book</button></div>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <h3>🛣️ Outstation Service</h3>
-        <button class="btn btn-outline" onclick="toggle('out')">Explore Rates</button>
-        <div id="out" class="hidden">
-            <div class="cards">
-                <div class="card"><h4>Return Journey</h4><p>₹1000/day</p><button class="btn" onclick="openForm('Outstation Return Journey',1000)">Book</button></div>
-                <div class="card"><h4>Drop Only</h4><p>Calculator Below</p></div>
-            </div>
-            <div style="max-width:400px; margin:20px auto;">
-                <select id="city" onchange="calcDrop()">
-                    <option value="">Select Destination City</option>
-                    <option value="Ranchi">Ranchi</option>
-                    <option value="Bokaro">Bokaro</option>
-                    <option value="Dhanbad">Dhanbad</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Gaya">Gaya</option>
-                    <option value="Patna">Patna</option>
-                    <option value="Banaras">Banaras</option>
-                    <option value="Other">Other (Calculate by KM)</option>
-                </select>
-                <input id="kms" type="number" placeholder="Enter Total KM" class="hidden" oninput="calcDrop()">
-                <p id="dropFareText"></p>
-                <button class="btn" style="width:100%" onclick="bookDrop()">Confirm Drop Booking</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="service-box">
         <h3>📅 Advanced / Reserved Ride</h3>
+        <p>Book a car with fixed fare pricing</p>
         <button class="btn btn-outline" onclick="toggle('res')">Calculate Fixed Fare</button>
         <div id="res" class="hidden" style="max-width:500px; margin:20px auto; text-align: left;">
             <label>Route Details</label>
@@ -292,7 +269,52 @@ footer {
             <button class="btn" style="width:100%; background:var(--primary);" onclick="continueBooking()">Continue to Details</button>
         </div>
     </div>
+</section>
 
+<hr style="opacity: 0.1; max-width: 1200px; margin: auto;">
+
+<section id="driver-main-section">
+    <h2 class="section-title">👨‍✈️ EXPERT DRIVER SERVICES</h2>
+
+    <div class="service-box">
+        <h3>Local Driver (Hourly)</h3>
+        <p>Hire professional drivers for your own car (City Use)</p>
+        <button class="btn btn-outline" onclick="toggle('local')">Check Hourly Plans</button>
+        <div id="local" class="hidden cards">
+            <div class="card"><h4>2 Hours</h4><p>₹249</p><button class="btn" onclick="openForm('Driver 2 Hours',249)">Book</button></div>
+            <div class="card"><h4>4 Hours</h4><p>₹429</p><button class="btn" onclick="openForm('Driver 4 Hours',429)">Book</button></div>
+            <div class="card"><h4>6 Hours</h4><p>₹629</p><button class="btn" onclick="openForm('Driver 6 Hours',629)">Book</button></div>
+            <div class="card"><h4>8 Hours</h4><p>₹829</p><button class="btn" onclick="openForm('Driver 8 Hours',829)">Book</button></div>
+        </div>
+    </div>
+
+    <div class="service-box">
+        <h3>🛣️ Outstation Driver Service</h3>
+        <p>Expert drivers for your long distance inter-city trips</p>
+        <button class="btn btn-outline" onclick="toggle('out')">View Outstation Rates</button>
+        <div id="out" class="hidden">
+            <div class="cards">
+                <div class="card"><h4>Return Journey</h4><p>₹1000/day</p><button class="btn" onclick="openForm('Outstation Driver - Return',1000)">Book</button></div>
+                <div class="card"><h4>One-Way Drop</h4><p>Calculator Below</p></div>
+            </div>
+            <div style="max-width:400px; margin:20px auto;">
+                <select id="city" onchange="calcDrop()">
+                    <option value="">Select Destination City</option>
+                    <option value="Ranchi">Ranchi</option>
+                    <option value="Bokaro">Bokaro</option>
+                    <option value="Dhanbad">Dhanbad</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Gaya">Gaya</option>
+                    <option value="Patna">Patna</option>
+                    <option value="Banaras">Banaras</option>
+                    <option value="Other">Other (Calculate by KM)</option>
+                </select>
+                <input id="kms" type="number" placeholder="Enter Total KM" class="hidden" oninput="calcDrop()">
+                <p id="dropFareText"></p>
+                <button class="btn" style="width:100%" onclick="bookDrop()">Confirm Driver Booking</button>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="form" class="hidden service-box">
@@ -344,7 +366,6 @@ footer {
 </footer>
 
 <script>
-// (SARA JS LOGIC SAME HAI JO AAPNE DIYA THA)
 let finalFare = 0;
 function toggle(id){
     document.querySelectorAll('#cab,#local,#out,#res').forEach(e=>e.classList.add('hidden'));
@@ -379,7 +400,7 @@ function calcDrop(){
 
 function bookDrop(){
     if(!finalFare){alert("Calculate fare first");return;}
-    openForm("Outstation Drop - "+document.getElementById("city").value,finalFare);
+    openForm("Outstation Driver Drop - "+document.getElementById("city").value,finalFare);
 }
 
 function calcFare(){
